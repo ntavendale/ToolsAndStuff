@@ -1,0 +1,36 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{3109E8D4-7EC0-424F-8106-3D098845879D}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="LRUtils\LRUtils.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="LRUtils">
+        <MSBuild Projects="LRUtils\LRUtils.dproj"/>
+    </Target>
+    <Target Name="LRUtils:Clean">
+        <MSBuild Projects="LRUtils\LRUtils.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="LRUtils:Make">
+        <MSBuild Projects="LRUtils\LRUtils.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="LRUtils"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="LRUtils:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="LRUtils:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>
